@@ -19,3 +19,9 @@
 **Link:** Para navegação direta, sem a necessidade de controlar o estado de ativação.
 
 **useNavigate:** Para navegação via JavaScript, útil em resposta a eventos.
+
+**URL:** é o endereço completo que aparece no navegador (ex: https://codeconnect.com/auth/login).
+
+**Rota:** é a parte da URL que o React Router usa para decidir qual componente exibir (ex: /auth/login no <Route path="/auth/login" element={<Login />} />).
+
+**Por que usar prefixos nas rotas?** Serve para agrupar rotas que fazem parte de uma mesma "seção" ou funcionalidade da aplicação. Por exemplo, /auth/login e /auth/register indicam que ambas as páginas estão relacionadas à autenticação. Isso melhora a clareza e a organização do código.
