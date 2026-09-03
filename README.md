@@ -25,3 +25,5 @@
 **Rota:** é a parte da URL que o React Router usa para decidir qual componente exibir (ex: /auth/login no <Route path="/auth/login" element={<Login />} />).
 
 **Por que usar prefixos nas rotas?** Serve para agrupar rotas que fazem parte de uma mesma "seção" ou funcionalidade da aplicação. Por exemplo, /auth/login e /auth/register indicam que ambas as páginas estão relacionadas à autenticação. Isso melhora a clareza e a organização do código.
+
+**Rota para o logout:** Ao criar uma rota /auth/logout, toda a lógica de saída da conta fica centralizada em um único lugar. A lógica de logout pode ser facilmente reutilizada em diferentes partes da aplicação (menu, botão de sair, etc.), garantindo que a experiência do usuário seja sempre a mesma. Um código centralizado é mais fácil de entender, testar e manter. Se for necessário adicionar uma nova funcionalidade (como um alerta de confirmação antes de sair), a mudança é feita em um só lugar.
