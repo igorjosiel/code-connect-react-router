@@ -43,7 +43,9 @@ function mockComments(postId, count = 2) {
         "Show! Compartilhando com amigos.",
         "Amei o post, ansioso(a) por mais!"
     ];
+
     const comments = [];
+
     for (let i = 0; i < count; i++) {
         const author = allAuthors[Math.floor(Math.random() * allAuthors.length)];
         comments.push({
@@ -60,6 +62,7 @@ function mockComments(postId, count = 2) {
             }
         });
     }
+    
     return comments;
 }
 

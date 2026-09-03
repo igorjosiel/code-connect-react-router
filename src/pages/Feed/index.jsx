@@ -10,5 +10,5 @@ export const Feed = () => {
                 {posts.map(post => <CardPost key={post.slug} post={post} />)}
             </main>
         </AppLayout>
-    )
+    );
 }
