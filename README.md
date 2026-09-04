@@ -29,3 +29,8 @@
 **Rota para o logout:** Ao criar uma rota /auth/logout, toda a lógica de saída da conta fica centralizada em um único lugar. A lógica de logout pode ser facilmente reutilizada em diferentes partes da aplicação (menu, botão de sair, etc.), garantindo que a experiência do usuário seja sempre a mesma. Um código centralizado é mais fácil de entender, testar e manter. Se for necessário adicionar uma nova funcionalidade (como um alerta de confirmação antes de sair), a mudança é feita em um só lugar.
 
 **Slug:** slug é uma parte da URL que identifica um recurso de forma legível e única. Em vez de usar um ID numérico (como /blog-post/123), que não diz muito ao usuário, o slug (como /blog-post/introducao-ao-react) é mais descritivo e pode até ajudar no SEO (otimização para motores de busca). Podemos definir um segmento dinâmico com dois pontos (ex: <Route path="blog-post/:slug">). E depois usamos o hook useParams() para capturar o valor do slug da URL (ex: const { slug } = useParams()) e então usá-lo para buscar os dados específicos.
+
+**Optional Segments (Segmentos Opcionais):** Permitem que uma parte da URL exista ou não. São indicados com um ? no final do segmento. Exemplos: users/:userId/edit? – aceita /users/123 e /users/123/edit. Ideal para páginas que têm modos de visualização e edição.
+
+**Splats (Catch-all / Resto da URL):** Usados quando você não sabe quantos níveis a URL pode ter ou quer capturar todo o restante de um caminho. Exemplo: files/* – aceita /files/documento.pdf, /files/pasta/documento.pdf, etc. Indicados com um *. Para acessar o valor do splat no componente, você usa params["*"] ou let { "*": splat } = useParams();.
+Comum em gerenciadores de arquivos ou CMSs.
