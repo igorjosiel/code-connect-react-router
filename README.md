@@ -34,3 +34,7 @@
 
 **Splats (Catch-all / Resto da URL):** Usados quando você não sabe quantos níveis a URL pode ter ou quer capturar todo o restante de um caminho. Exemplo: files/* – aceita /files/documento.pdf, /files/pasta/documento.pdf, etc. Indicados com um *. Para acessar o valor do splat no componente, você usa params["*"] ou let { "*": splat } = useParams();.
 Comum em gerenciadores de arquivos ou CMSs.
+
+**Layouts compartilhados:** Aprendemos a agrupar rotas e aplicar layouts compartilhados, como AuthLayout para autenticação e AppLayout para o restante da aplicação, eliminando a necessidade de adicionar layouts manualmente em cada página. Um ponto chave foi a substituição do uso de children pelo componente Outlet do React Router. O Outlet permite que o React Router injete o conteúdo específico da rota dentro do layout definido, garantindo que a estrutura visual seja mantida de forma eficiente e automática.
+
+**URLs inexistentes:** Verificamos se um post existe e, caso contrário, redirecionamos o usuário para uma página de "não encontrado" usando useNavigate dentro de um useEffect. Para URLs que não correspondem a nenhuma rota definida, foi criado um componente NotFound e uma rota curinga (*) no roteador. Essa rota curinga garante que, se nenhuma outra rota fizer match, o componente NotFound seja exibido. É importante posicionar a rota curinga por último no roteador para que ela só seja acionada quando nenhuma outra rota for encontrada.
