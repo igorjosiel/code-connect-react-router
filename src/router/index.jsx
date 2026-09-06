@@ -7,6 +7,7 @@ import { ProtectedRoute } from "../components/ProtectedRoute";
 import { BlogPost } from "../pages/BlogPost";
 import { AuthLayout } from "../layouts/Auth";
 import { AppLayout } from "../layouts/App";
+import { NotFound } from "../pages/NotFound";
 
 export const AppRouter = () => {
     return (
@@ -30,6 +31,8 @@ export const AppRouter = () => {
                             <BlogPost />
                         </ProtectedRoute>
                     } />
+
+                    <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
         </BrowserRouter>
