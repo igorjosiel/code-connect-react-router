@@ -15,7 +15,9 @@ export const BlogPost = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/blog-posts/slug/${slug}`)
+        fetch(`http://localhost:3000/blog-posts/slug/${slug}`, {
+            method: "POST"
+        })
         .then(response => {
             if (response.status == 404) {
                 navigate("/not-found");
