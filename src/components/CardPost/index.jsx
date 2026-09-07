@@ -1,10 +1,8 @@
-import { Author } from "../Author"
-import styles from './cardpost.module.css'
-
-import { ThumbsUpButton } from "./ThumbsUpButton"
-import { IconChat } from "../icons/IconChat"
-import { IconButton } from "../IconButton"
-import { Link } from "react-router"
+import { Author } from "../Author";
+import { ThumbsUpButton } from "./ThumbsUpButton";
+import { Link } from "react-router";
+import { ModalComment } from "../ModalComment";
+import styles from './cardpost.module.css';
 
 export const CardPost = ({ post }) => {
     return (
@@ -31,9 +29,10 @@ export const CardPost = ({ post }) => {
                         </p>
                     </div>
                     <div className={styles.action}>
-                        <IconButton>
+                        {/* <IconButton>
                             <IconChat />
-                        </IconButton>
+                        </IconButton> */}
+                        <ModalComment />
                         <p>
                             {post.comments.length}
                         </p>
@@ -42,5 +41,5 @@ export const CardPost = ({ post }) => {
                 <Author author={post.author} />
             </footer>
         </article>
-    )
+    );
 }
