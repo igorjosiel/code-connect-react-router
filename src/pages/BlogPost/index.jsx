@@ -7,6 +7,7 @@ import Typography from "../../components/Typography";
 import { CommentList } from "../../components/CommentList";
 import { ModalComment } from "../../components/ModalComment";
 import styles from './blogpost.module.css';
+import { http } from "../../api";
 
 export const BlogPost = () => {
     const [post, setPost] = useState(null);
@@ -15,17 +16,15 @@ export const BlogPost = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/blog-posts/slug/${slug}`, {
-            method: "POST"
-        })
-        .then(response => {
-            if (response.status == 404) {
-                navigate("/not-found");
-            }
-
-            return response.json();
-        })
-        .then(data => setPost(data));
+        http.get(`blog-posts/slug/${slug}`)
+            .then(response => {
+                setPost(response.data);
+            })
+            .catch(error => {
+                if (error.status == 404) {
+                    navigate("/not-found");
+                }
+            });
     }, [slug, navigate]);
 
     if (!post) {

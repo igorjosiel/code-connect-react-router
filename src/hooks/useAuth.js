@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { http } from '../api';
 
 export const useAuth = () => {
   const [user, setUser] = useState(null);
@@ -21,21 +22,11 @@ export const useAuth = () => {
 
   const register = async (name, email, password) => {
     try {
-      const response = await fetch("http://localhost:3000/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
+      await http.post("auth/register", {
           name,
           email,
           password
-        })
       });
-
-      if (!response.ok) {
-        throw new Error("HTTP Error: ", response.status);
-      }
       
       return { success: true };
     } catch (error) {
@@ -45,22 +36,12 @@ export const useAuth = () => {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch("http://localhost:3000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
+      const response = await http.post("auth/login", {
           email,
           password
-        })
       });
 
-      if (!response.ok) {
-        throw new Error("HTTP Error: ", response.status);
-      }
-
-      const data = await response.json();
+      const data = response.data;
 
       setUser(data.user);
 
