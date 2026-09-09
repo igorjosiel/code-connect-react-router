@@ -5,9 +5,13 @@ import { Link } from "react-router";
 import { ModalComment } from "../ModalComment";
 import styles from './cardpost.module.css';
 import { http } from "../../api";
+import { useAuth } from "../../hooks/useAuth";
 
 export const CardPost = ({ post }) => {
     const [likes, setLikes] = useState(post.likes);
+    const [comments, setComments] = useState(post.comments);
+
+    const { isAuthenticated } = useAuth();
 
     const handleLikeButtn = () => {
         const token = localStorage.getItem("access_token");
@@ -20,6 +24,10 @@ export const CardPost = ({ post }) => {
         .then(() => {
             setLikes(oldState => oldState + 1);
         });
+    }
+
+    const handleNewComment = (comment) => {
+        setComments([comment, ...comments]);
     }
 
     return (
@@ -40,7 +48,7 @@ export const CardPost = ({ post }) => {
             <footer className={styles.footer}>
                 <div className={styles.actions}>
                     <div className={styles.action}>
-                        <ThumbsUpButton loading={false} onClick={handleLikeButtn} />
+                        <ThumbsUpButton loading={false} onClick={handleLikeButtn} disabled={!isAuthenticated} />
                         <p>
                             {likes}
                         </p>
@@ -49,9 +57,9 @@ export const CardPost = ({ post }) => {
                         {/* <IconButton>
                             <IconChat />
                         </IconButton> */}
-                        <ModalComment />
+                        <ModalComment onSuccess={handleNewComment} postId={post.id} />
                         <p>
-                            {post.comments.length}
+                            {comments.length}
                         </p>
                     </div>
                 </div>

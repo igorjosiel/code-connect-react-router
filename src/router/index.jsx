@@ -21,15 +21,15 @@ export const AppRouter = () => {
 
                 <Route path="/" element={<AppLayout />}>
                     <Route path="" element={
-                        <ProtectedRoute>
+                        // <ProtectedRoute>
                             <Feed />
-                        </ProtectedRoute>
+                        // </ProtectedRoute>
                     } />
 
                     <Route path="blog-post/:slug" element={
-                        <ProtectedRoute>
+                        // <ProtectedRoute>
                             <BlogPost />
-                        </ProtectedRoute>
+                        // </ProtectedRoute>
                     } />
 
                     <Route path="*" element={<NotFound />} />
