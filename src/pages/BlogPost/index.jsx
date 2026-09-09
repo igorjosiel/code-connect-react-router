@@ -11,6 +11,11 @@ import { http } from "../../api";
 
 export const BlogPost = () => {
     const [post, setPost] = useState(null);
+    const [comments, setComments] = useState([]);
+
+    const handleNewComment = (comment) => {
+        setComments([comment, ...comments]);
+    }
 
     const { slug } = useParams();
     const navigate = useNavigate();
@@ -19,6 +24,7 @@ export const BlogPost = () => {
         http.get(`blog-posts/slug/${slug}`)
             .then(response => {
                 setPost(response.data);
+                setComments(response.data.comments);
             })
             .catch(error => {
                 if (error.status == 404) {
@@ -58,9 +64,9 @@ export const BlogPost = () => {
                             {/* <IconButton>
                                 <IconChat />
                             </IconButton> */}
-                            <ModalComment />
+                            <ModalComment onSuccess={handleNewComment} postId={post?.id} />
                             <p>
-                                {post.comments.length}
+                                {comments.length}
                             </p>
                         </div>
                     </div>
@@ -73,7 +79,7 @@ export const BlogPost = () => {
                     {post.markdown}
                 </ReactMarkdown>
             </div>
-            <CommentList comments={post.comments} />
+            <CommentList comments={comments} />
         </main>
     );
 }
