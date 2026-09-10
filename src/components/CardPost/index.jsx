@@ -14,13 +14,7 @@ export const CardPost = ({ post }) => {
     const { isAuthenticated } = useAuth();
 
     const handleLikeButtn = () => {
-        const token = localStorage.getItem("access_token");
-
-        http.post(`blog-posts/${post.id}/like`, {}, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
+        http.post(`blog-posts/${post.id}/like`)
         .then(() => {
             setLikes(oldState => oldState + 1);
         });

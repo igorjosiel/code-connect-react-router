@@ -17,11 +17,24 @@ export const BlogPost = () => {
         setComments([comment, ...comments]);
     }
 
+    const handleDelete = (commentId) => {
+        const isConfirmed = confirm("Tem certeza de que deseja remover o comentário?");
+
+        if (isConfirmed) {
+            http
+                .delete(`comments/${commentId}`)
+                .then(() =>{
+                    setComments(oldState => oldState.filter(c => c.id != commentId));
+                });
+        }
+    }
+
     const { slug } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
-        http.get(`blog-posts/slug/${slug}`)
+        http
+            .get(`blog-posts/slug/${slug}`)
             .then(response => {
                 setPost(response.data);
                 setComments(response.data.comments);
@@ -79,7 +92,7 @@ export const BlogPost = () => {
                     {post.markdown}
                 </ReactMarkdown>
             </div>
-            <CommentList comments={comments} />
+            <CommentList comments={comments} onDelete={handleDelete} />
         </main>
     );
 }
