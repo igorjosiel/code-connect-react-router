@@ -27,7 +27,7 @@
     text-decoration: none;
 }
 
-.outline:hover,
-.btn:hover {
-    opacity: 0.6;
+.outline:hover {
+    background-color: var(--petrol-green);
+    color: white
 }

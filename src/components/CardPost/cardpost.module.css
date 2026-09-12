@@ -1,18 +1,20 @@
 .card {
     width: 486px;
-    border-radius: 8px;
+    border-radius: 10px;
     background: var(--dark-gray);
 }
 
 .header {
+    height: 150px;
+    overflow: hidden;
     border-radius: 8px 8px 0px 0px;
     background: var(--medium-gray);
-    padding: 24px;
 }
 
 .header figure {
     margin: 0;
     position: relative;
+    height: 100%;
 }
 
 .figure {
@@ -91,4 +93,19 @@
 .link {
     text-decoration: none;
     cursor: pointer;
+}
+
+.outline {
+    color: var(--highlight-green);
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    border-radius: 8px;
+    padding: 12px 16px;
+    cursor: pointer;
+    background: var(--petrol-green);
+    text-decoration: none;
+    width: 50%;
 }
