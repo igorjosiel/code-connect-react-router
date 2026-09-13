@@ -1,4 +1,5 @@
 .btn {
+    width: 200px;
     color: var(--petrol-green);
     text-align: center;
     font-size: 18px;
