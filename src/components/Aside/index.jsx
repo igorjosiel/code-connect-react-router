@@ -4,7 +4,6 @@ import { IconFeed } from '../icons/IconFeed';
 import { IconAccount } from '../icons/IconAccount';
 import { IconInfo } from '../icons/IconInfo';
 import { IconLogin } from '../icons/IconLogin';
-import { Button } from '../Button';
 import { Link } from '../Link';
 import { useAuth } from "../../hooks/useAuth";
 import styles from './aside.module.css';
@@ -22,9 +21,9 @@ export const Aside = () => {
                         </Link>
                     </li>
                     <li>
-                        <Button href="#" outline>
+                        <Link href="new-post" className={styles.outline}>
                             Publicar
-                        </Button>
+                        </Link>
                     </li>
                     <li>
                         <AsideLink href="/">
@@ -46,24 +45,22 @@ export const Aside = () => {
                     </li>
                     
                     {isAuthenticated && (
-                            <li>
-                                <AsideLink href="/auth/logout">
-                                    <IconLogin />
-                                    Logout
-                                </AsideLink>
-                            </li>
-                        )
-                    }
+                        <li>
+                            <AsideLink href="/auth/logout">
+                                <IconLogin />
+                                Logout
+                            </AsideLink>
+                        </li>
+                    )}
 
                     {!isAuthenticated && (
-                            <li>
-                                <AsideLink href="/auth/login">
-                                    <IconLogin />
-                                    Login
-                                </AsideLink>
-                            </li>
-                        )
-                    }
+                        <li>
+                            <AsideLink href="/auth/login">
+                                <IconLogin />
+                                Login
+                            </AsideLink>
+                        </li>
+                    )}
                 </ul>
             </nav>
         </aside>
