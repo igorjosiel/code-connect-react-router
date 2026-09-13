@@ -8,6 +8,7 @@ import { BlogPost } from "../pages/BlogPost";
 import { AuthLayout } from "../layouts/Auth";
 import { AppLayout } from "../layouts/App";
 import { NotFound } from "../pages/NotFound";
+import { NewPost } from "../pages/NewPost";
 
 export const AppRouter = () => {
     return (
@@ -20,18 +21,9 @@ export const AppRouter = () => {
                 </Route>
 
                 <Route path="/" element={<AppLayout />}>
-                    <Route path="" element={
-                        // <ProtectedRoute>
-                            <Feed />
-                        // </ProtectedRoute>
-                    } />
-
-                    <Route path="blog-post/:slug" element={
-                        // <ProtectedRoute>
-                            <BlogPost />
-                        // </ProtectedRoute>
-                    } />
-
+                    <Route path="" element={<Feed />} />
+                    <Route path="blog-post/:slug" element={<BlogPost />} />
+                    <Route path="new-post" element={<NewPost />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
