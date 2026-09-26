@@ -38,3 +38,11 @@ Comum em gerenciadores de arquivos ou CMSs.
 **Layouts compartilhados:** Aprendemos a agrupar rotas e aplicar layouts compartilhados, como AuthLayout para autenticação e AppLayout para o restante da aplicação, eliminando a necessidade de adicionar layouts manualmente em cada página. Um ponto chave foi a substituição do uso de children pelo componente Outlet do React Router. O Outlet permite que o React Router injete o conteúdo específico da rota dentro do layout definido, garantindo que a estrutura visual seja mantida de forma eficiente e automática.
 
 **URLs inexistentes:** Verificamos se um post existe e, caso contrário, redirecionamos o usuário para uma página de "não encontrado" usando useNavigate dentro de um useEffect. Para URLs que não correspondem a nenhuma rota definida, foi criado um componente NotFound e uma rota curinga (*) no roteador. Essa rota curinga garante que, se nenhuma outra rota fizer match, o componente NotFound seja exibido. É importante posicionar a rota curinga por último no roteador para que ela só seja acionada quando nenhuma outra rota for encontrada.
+
+Funcionalidades:
+
+criar novo post ao clicar no botão de publicar
+criar a página de perfil
+melhorar a tela de 404 - não encontrado
+criar tela sobre nós
+Tratar quando ocorre um erro ao realizar requisição para a API
