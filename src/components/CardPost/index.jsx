@@ -3,9 +3,9 @@ import { Author } from "../Author";
 import { ThumbsUpButton } from "./ThumbsUpButton";
 import { Link } from "react-router";
 import { ModalComment } from "../ModalComment";
-import styles from './cardpost.module.css';
 import { http } from "../../api";
 import { useAuth } from "../../hooks/useAuth";
+import styles from './cardpost.module.css';
 
 export const CardPost = ({ post }) => {
     const [likes, setLikes] = useState(post.likes);
