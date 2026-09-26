@@ -4,18 +4,8 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { Label } from '../../components/Label';
 import { Textarea } from '../../components/Textarea';
+import createSlug from '../../utils/createSlug';
 import styles from './newpost.module.css';
-
-function createSlug(title) {
-    return title
-        .normalize("NFD")                  // Separa letras dos acentos
-        .replace(/[\u0300-\u036f]/g, "")   // Remove os acentos
-        .toLowerCase()                     // Converte para minúsculas
-        .trim()                            // Remove espaços do início e fim
-        .replace(/[^a-z0-9\s-]/g, "")      // Remove caracteres especiais
-        .replace(/\s+/g, "-")              // Espaços viram hífens
-        .replace(/-+/g, "-");              // Remove hífens duplicados
-}
 
 export const NewPost = () => {
     const [loading, setLoading] = useState(false);
