@@ -46,3 +46,4 @@ criar a página de perfil
 melhorar a tela de 404 - não encontrado
 criar tela sobre nós
 Tratar quando ocorre um erro ao realizar requisição para a API
+Adicionar as informações do usuário na Context API
