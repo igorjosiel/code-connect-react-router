@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { http } from '../api';
+import UserContext from '../contexts/UserProvider/UserContext';
 
 export const useAuth = () => {
+  const { currentUser, updateCurrentUser } = use(UserContext);
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -37,18 +39,17 @@ export const useAuth = () => {
   const login = async (email, password) => {
     try {
       const response = await http.post("auth/login", {
-          email,
-          password
+        email,
+        password
       });
 
       const data = response.data;
-
-      setUser(data.user);
+      updateCurrentUser(data.user);
 
       localStorage.setItem('auth_user', JSON.stringify(data.user));
       localStorage.setItem('access_token', data.access_token);
       
-      return { success: true, user };
+      return { success: true };
     } catch (error) {
       return { success: false, error: error.message };
     }

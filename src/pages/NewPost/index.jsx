@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { use, useState } from 'react';
+import { useNavigate } from "react-router";
 import { http } from '../../api';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
@@ -6,11 +7,15 @@ import { Label } from '../../components/Label';
 import { Textarea } from '../../components/Textarea';
 import createSlug from '../../utils/createSlug';
 import styles from './newpost.module.css';
+import UserContext from '../../contexts/UserProvider/UserContext';
 
 export const NewPost = () => {
     const [loading, setLoading] = useState(false);
+    const { currentUser } = use(UserContext);
 
-    const onSubmit = (formData) => {
+    let navigate = useNavigate();
+
+    const onSubmit = async (formData) => {
         const cover = formData.get('cover');
         const title = formData.get('title');
         const body = formData.get('body');
@@ -19,18 +24,16 @@ export const NewPost = () => {
         try {
             setLoading(true);
 
-            http.post("blog-posts", {
+            await http.post("blog-posts", {
                 cover,
                 title,
                 body,
                 slug: createSlug(title),
-                authorId: "cmuipmc7l00008b49k9z5afva",
-                markdown
-            }).then((response) => {
-                console.log(response.data);
-            }).finally(() => {
-                setLoading(false);
+                authorId: currentUser.id,
+                markdown,
             });
+
+            navigate("/");
         } catch(error) {
             console.error('Erro ao criar/atualizar comentário:', error);
         }
