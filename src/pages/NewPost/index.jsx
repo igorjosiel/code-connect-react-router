@@ -13,7 +13,7 @@ export const NewPost = () => {
     const [loading, setLoading] = useState(false);
     const { currentUser } = use(UserContext);
 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     const onSubmit = async (formData) => {
         const cover = formData.get('cover');
@@ -33,7 +33,7 @@ export const NewPost = () => {
                 markdown,
             });
 
-            navigate("/");
+            navigate("/", { state: { successNewPost: true } });
         } catch(error) {
             console.error('Erro ao criar/atualizar comentário:', error);
         }
